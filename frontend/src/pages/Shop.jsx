@@ -1,14 +1,14 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useGetFilteredProductsQuery } from "../redux/api/productApiSlice";
 import { useFetchCategoriesQuery } from "../redux/api/categoryApiSlice";
+import { useGetFilteredProductsQuery } from "../redux/api/productApiSlice";
 
+import Loader from "../components/Loader";
 import {
   setCategories,
-  setProducts,
   setChecked,
+  setProducts,
 } from "../redux/features/shop/shopSlice";
-import Loader from "../components/Loader";
 import ProductCard from "./Products/ProductCard";
 
 const Shop = () => {
@@ -84,8 +84,8 @@ const Shop = () => {
     <>
       <div className="container mx-auto">
         <div className="flex md:flex-row">
-          <div className="bg-[#151515] p-3 mt-2 mb-2">
-            <h2 className="h4 text-center py-2 bg-black rounded-full mb-2">
+          <div className="bg-[#131313] p-3 mt-2 mb-2 border border-solid border-gray-200 rounded-lg">
+            <h2 className="h4 text-center py-2 bg-black rounded-full mb-2 border border-solid border-gray-600">
               Filter by Categories
             </h2>
 
@@ -111,7 +111,7 @@ const Shop = () => {
               ))}
             </div>
 
-            <h2 className="h4 text-center py-2 bg-black rounded-full mb-2">
+            <h2 className="h4 text-center py-2 bg-black rounded-full mb-2 border border-solid border-gray-600">
               Filter by Brands
             </h2>
 
@@ -138,7 +138,7 @@ const Shop = () => {
               ))}
             </div>
 
-            <h2 className="h4 text-center py-2 bg-black rounded-full mb-2">
+            <h2 className="h4 text-center py-2 bg-black rounded-full mb-2 border border-solid border-gray-600">
               Filer by Price
             </h2>
 

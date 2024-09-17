@@ -1,11 +1,11 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import { useFetchCategoriesQuery } from "../../redux/api/categoryApiSlice";
 import {
   useCreateProductMutation,
   useUploadProductImageMutation,
 } from "../../redux/api/productApiSlice";
-import { useFetchCategoriesQuery } from "../../redux/api/categoryApiSlice";
-import { toast } from "react-toastify";
 import AdminMenu from "./AdminMenu";
 
 const ProductList = () => {
@@ -24,21 +24,35 @@ const ProductList = () => {
   const [createProduct] = useCreateProductMutation();
   const { data: categories } = useFetchCategoriesQuery();
 
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
-      const productData = new FormData();
-      productData.append("image", image);
-      productData.append("name", name);
-      productData.append("description", description);
-      productData.append("price", price);
-      productData.append("category", category);
-      productData.append("quantity", quantity);
-      productData.append("brand", brand);
-      productData.append("countInStock", stock);
+      //  let productData = new FormData();
+      // productData.append("image", image);
+      // productData.append("name", name);
+      // productData.append("description", description);
+      // productData.append("price", price);
+      // productData.append("category", category);
+      // productData.append("quantity", quantity);
+      // productData.append("brand", brand);
+      // productData.append("countInStock", stock);
+
+      let productData = {
+        image,
+        name,
+        description,
+        price,
+        category,
+        quantity,
+        brand,
+        countInStock: stock,
+      };
+
 
       const { data } = await createProduct(productData);
+
 
       if (data.error) {
         toast.error("Product create failed. Try Again.");

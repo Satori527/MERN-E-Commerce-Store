@@ -3,7 +3,12 @@ import Product from "../models/productModel.js";
 
 const addProduct = asyncHandler(async (req, res) => {
   try {
-    const { name, description, price, category, quantity, brand } = req.fields;
+    const { name, description, price, category, quantity, brand } = req.body;
+
+    // console.log("req",req);
+    // console.log("req.fields",req.fields);
+    console.log("name",name);
+    console.log("req.body",req.body);
 
     // Validation
     switch (true) {
@@ -21,7 +26,7 @@ const addProduct = asyncHandler(async (req, res) => {
         return res.json({ error: "Quantity is required" });
     }
 
-    const product = new Product({ ...req.fields });
+    const product = new Product({ ...req.body });
     await product.save();
     res.json(product);
   } catch (error) {
@@ -211,14 +216,6 @@ const filterProducts = asyncHandler(async (req, res) => {
 });
 
 export {
-  addProduct,
-  updateProductDetails,
-  removeProduct,
-  fetchProducts,
-  fetchProductById,
-  fetchAllProducts,
-  addProductReview,
-  fetchTopProducts,
-  fetchNewProducts,
-  filterProducts,
+  addProduct, addProductReview, fetchAllProducts, fetchNewProducts, fetchProductById, fetchProducts, fetchTopProducts, filterProducts, removeProduct, updateProductDetails
 };
+

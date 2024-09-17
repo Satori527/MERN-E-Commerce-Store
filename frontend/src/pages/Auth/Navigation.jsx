@@ -1,19 +1,18 @@
 import { useState } from "react";
 import {
   AiOutlineHome,
-  AiOutlineShopping,
   AiOutlineLogin,
-  AiOutlineUserAdd,
+  AiOutlineShopping,
   AiOutlineShoppingCart,
+  AiOutlineUserAdd,
 } from "react-icons/ai";
 import { FaHeart } from "react-icons/fa";
-import { Link } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
-import "./Navigation.css";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
 import { useLogoutMutation } from "../../redux/api/usersApiSlice";
 import { logout } from "../../redux/features/auth/authSlice";
 import FavoritesCount from "../Products/FavoritesCount";
+import "./Navigation.css";
 
 const Navigation = () => {
   const { userInfo } = useSelector((state) => state.auth);
@@ -25,6 +24,12 @@ const Navigation = () => {
   const toggleDropdown = () => {
     setDropdownOpen(!dropdownOpen);
   };
+
+  // useEffect(() => {
+  //   if (!showSidebar) {
+  //     setDropdownOpen(false);
+  //   }
+  // }, [showSidebar]);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -126,7 +131,7 @@ const Navigation = () => {
 
         {dropdownOpen && userInfo && (
           <ul
-            className={`absolute right-0 mt-2 mr-14 space-y-2 bg-white text-gray-600 ${
+            className={`absolute right-0 mt-2 mr-14 space-y-2 bg-gray-700 border-2 border-solid border-white rounded-md text-white -translate-y-6 ${
               !userInfo.isAdmin ? "-top-20" : "-top-80"
             } `}
           >
@@ -135,7 +140,7 @@ const Navigation = () => {
                 <li>
                   <Link
                     to="/admin/dashboard"
-                    className="block px-4 py-2 hover:bg-gray-100"
+                    className="block px-4 py-2 hover:bg-gray-400 hover:text-black"
                   >
                     Dashboard
                   </Link>
@@ -143,7 +148,7 @@ const Navigation = () => {
                 <li>
                   <Link
                     to="/admin/productlist"
-                    className="block px-4 py-2 hover:bg-gray-100"
+                    className="block px-4 py-2 hover:bg-gray-400 hover:text-black"
                   >
                     Products
                   </Link>
@@ -151,7 +156,7 @@ const Navigation = () => {
                 <li>
                   <Link
                     to="/admin/categorylist"
-                    className="block px-4 py-2 hover:bg-gray-100"
+                    className="block px-4 py-2 hover:bg-gray-400 hover:text-black"
                   >
                     Category
                   </Link>
@@ -159,7 +164,7 @@ const Navigation = () => {
                 <li>
                   <Link
                     to="/admin/orderlist"
-                    className="block px-4 py-2 hover:bg-gray-100"
+                    className="block px-4 py-2 hover:bg-gray-400 hover:text-black"
                   >
                     Orders
                   </Link>
@@ -167,7 +172,7 @@ const Navigation = () => {
                 <li>
                   <Link
                     to="/admin/userlist"
-                    className="block px-4 py-2 hover:bg-gray-100"
+                    className="block px-4 py-2 hover:bg-gray-400 hover:text-black"
                   >
                     Users
                   </Link>
@@ -176,14 +181,14 @@ const Navigation = () => {
             )}
 
             <li>
-              <Link to="/profile" className="block px-4 py-2 hover:bg-gray-100">
+              <Link to="/profile" className="block px-4 py-2 hover:bg-gray-400 hover:text-black">
                 Profile
               </Link>
             </li>
             <li>
               <button
                 onClick={logoutHandler}
-                className="block w-full px-4 py-2 text-left hover:bg-gray-100"
+                className="block w-full px-4 py-2 text-left hover:bg-gray-400 hover:text-black"
               >
                 Logout
               </button>
