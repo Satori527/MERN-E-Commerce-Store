@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
   AiOutlineHome,
   AiOutlineLogin,
@@ -21,20 +21,33 @@ const Navigation = () => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [showSidebar, setShowSidebar] = useState(false);
 
+  let menuRef = useRef();
+
   const toggleDropdown = () => {
+    console.log(event)
     setDropdownOpen(!dropdownOpen);
   };
 
-  // useEffect(() => {
-  //   if (!showSidebar) {
-  //     setDropdownOpen(false);
-  //   }
-  // }, [showSidebar]);
+
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const [logoutApiCall] = useLogoutMutation();
+
+  useEffect(()=>{
+    const handler = (e) => {
+      if(!menuRef.current.contains(e.target)){
+        setDropdownOpen(false);
+        console.log(menuRef.current);
+      }
+    }
+    document.addEventListener('mousedown',handler)
+
+    return()=>{
+      document.removeEventListener("mousedown",handler)
+    }
+  })
 
   const logoutHandler = async () => {
     try {
@@ -51,7 +64,7 @@ const Navigation = () => {
       style={{ zIndex: 9999 }}
       className={`${
         showSidebar ? "hidden" : "flex"
-      } xl:flex lg:flex md:hidden sm:hidden flex-col justify-between p-4 text-white bg-[#000] w-[4%] hover:w-[15%] h-[100vh]  fixed `}
+      } xl:flex lg:flex md:hidden sm:hidden flex-col justify-between p-4 text-white w-[4%] hover:w-[15%] h-[100vh]  fixed `}
       id="navigation-container"
     >
       <div className="flex flex-col justify-center space-y-4">
@@ -99,10 +112,11 @@ const Navigation = () => {
         </Link>
       </div>
 
-      <div className="relative">
+      <div className="relative" ref={menuRef}>
         <button
           onClick={toggleDropdown}
           className="flex items-center text-gray-800 focus:outline-none"
+          
         >
           {userInfo ? (
             <span className="text-white">{userInfo.username}</span>

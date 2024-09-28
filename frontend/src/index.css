@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+
+
 body {
   background: #1a1a1c;
   color: #fff;
@@ -10,4 +12,30 @@ body {
 input,
 textarea {
   color: #000;
+}
+
+.button {
+  background-color: #000000;
+  border: none;
+  
+  position: relative;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.button::after{
+  content: '';
+  position: absolute;
+  height: 107%;
+  width: 103%;
+  border-radius: 8px;
+  background-image: linear-gradient(to bottom right, #6f00ff, #e100ff) ;
+  z-index: -1;
+}
+button:hover{
+  z-index: 0;
+  box-shadow: 0px 0px 100px 10px #008cff32,0px 0px 100px 10px #e100ff3f;
+  
 }
