@@ -1,5 +1,5 @@
-import { Link } from "react-router-dom";
 import moment from "moment";
+import { Link } from "react-router-dom";
 import { useAllProductsQuery } from "../../redux/api/productApiSlice";
 import AdminMenu from "./AdminMenu";
 
@@ -17,7 +17,7 @@ const AllProducts = () => {
   return (
     <>
       <div className="container mx-[9rem]">
-        <div className="flex flex-col  md:flex-row">
+        <div className="flex sm:flex-col  md:flex-col lg:flex-row xl:flex-row">
           <div className="p-3">
             <div className="ml-[2rem] text-xl font-bold h-12">
               All Products ({products.length})
@@ -27,7 +27,7 @@ const AllProducts = () => {
                 <Link
                   key={product._id}
                   to={`/admin/product/update/${product._id}`}
-                  className="block mb-4 overflow-hidden"
+                  className="block mb-4 overflow-hidden lg:w-[50%]"
                 >
                   <div className="flex">
                     <img
@@ -37,7 +37,7 @@ const AllProducts = () => {
                     />
                     <div className="p-4 flex flex-col justify-around">
                       <div className="flex justify-between">
-                        <h5 className="text-xl font-semibold mb-2">
+                        <h5 className="text-xl font-semibold mb-2" style={{wordWrap: 'break-word'}}>
                           {product?.name}
                         </h5>
 
@@ -80,7 +80,7 @@ const AllProducts = () => {
               ))}
             </div>
           </div>
-          <div className="md:w-1/4 p-3 mt-2">
+          <div className="md:w-1/12 p-3 mt-2">
             <AdminMenu />
           </div>
         </div>

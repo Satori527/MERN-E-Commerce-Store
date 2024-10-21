@@ -78,10 +78,12 @@ const Navigation = () => {
 
         <Link
           to="/shop"
-          className="flex items-center transition-transform transform hover:translate-x-2"
+          className="flex relative"
         >
-          <AiOutlineShopping className="mr-2 mt-[3rem]" size={26} />
-          <span className="hidden nav-item-name mt-[3rem]">SHOP</span>{" "}
+          <div className="flex justify-center items-center transition-transform transform hover:translate-x-2">
+            <AiOutlineShopping className="mr-2 mt-[3rem]" size={26} />
+            <span className="hidden nav-item-name mt-[3rem]">SHOP</span>{" "}
+          </div>
         </Link>
 
         <Link to="/cart" className="flex relative">

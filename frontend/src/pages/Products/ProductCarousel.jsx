@@ -1,8 +1,3 @@
-import { useGetTopProductsQuery } from "../../redux/api/productApiSlice";
-import Message from "../../components/Message";
-import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
 import moment from "moment";
 import {
   FaBox,
@@ -11,6 +6,11 @@ import {
   FaStar,
   FaStore,
 } from "react-icons/fa";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick-theme.css";
+import "slick-carousel/slick/slick.css";
+import Message from "../../components/Message";
+import { useGetTopProductsQuery } from "../../redux/api/productApiSlice";
 
 const ProductCarousel = () => {
   const { data: products, isLoading, error } = useGetTopProductsQuery();
@@ -27,7 +27,7 @@ const ProductCarousel = () => {
   };
 
   return (
-    <div className="mb-4 lg:block xl:block md:block">
+    <div className="carousel flex justify-center relative border border-gray-600 rounded-lg p-8">
       {isLoading ? null : error ? (
         <Message variant="danger">
           {error?.data?.message || error.error}
@@ -35,7 +35,7 @@ const ProductCarousel = () => {
       ) : (
         <Slider
           {...settings}
-          className="xl:w-[50rem]  lg:w-[50rem] md:w-[56rem] sm:w-[40rem] sm:block"
+          className="xl:w-[50rem]  lg:w-[50rem] md:w-[46rem] sm:w-[40rem] sm:block"
         >
           {products.map(
             ({
@@ -55,13 +55,13 @@ const ProductCarousel = () => {
                 <img
                   src={image}
                   alt={name}
-                  className="w-full rounded-lg object-cover h-[30rem]"
+                  className="w-full rounded-lg h-[30rem] object-contain bg-white"
                 />
 
                 <div className="mt-4 flex justify-between">
                   <div className="one">
-                    <h2>{name}</h2>
-                    <p> $ {price}</p> <br /> <br />
+                    <h2 className="text-lg font-medium text-purple-200">{name}</h2>
+                    <p className="text-lg font-medium text-pink-500"> $ {price}</p> <br /> <br />
                     <p className="w-[25rem]">
                       {description.substring(0, 170)} ...
                     </p>

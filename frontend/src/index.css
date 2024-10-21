@@ -36,6 +36,10 @@ textarea {
 }
 button:hover{
   z-index: 0;
-  box-shadow: 0px 0px 100px 10px #008cff32,0px 0px 100px 10px #e100ff3f;
+  box-shadow: 0px 0px 100px 10px #008cff32,0px 0px 100px 10px #e100ff80;
   
+}
+
+.carousel {
+  background-image: linear-gradient(to bottom right, #191919, #23172d) ;
 }

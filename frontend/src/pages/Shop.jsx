@@ -81,10 +81,10 @@ const Shop = () => {
   };
 
   return (
-    <>
-      <div className="container mx-auto">
-        <div className="flex md:flex-row">
-          <div className="bg-[#131313] p-3 mt-2 mb-2 border border-solid border-gray-200 rounded-lg">
+    
+      <div className="ml-32 w-11/12">
+        <div className="flex flex-row w-full">
+          <div className="bg-[#241331] p-3 mt-2 mb-2 border border-solid border-gray-200 rounded-lg">
             <h2 className="h4 text-center py-2 bg-black rounded-full mb-2 border border-solid border-gray-600">
               Filter by Categories
             </h2>
@@ -178,7 +178,7 @@ const Shop = () => {
           </div>
         </div>
       </div>
-    </>
+    
   );
 };
 

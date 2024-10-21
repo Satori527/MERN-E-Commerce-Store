@@ -3,12 +3,12 @@ import HeartIcon from "./HeartIcon";
 
 const Product = ({ product }) => {
   return (
-    <div className="w-[30rem] ml-[2rem] p-3 relative">
+    <div className="w-[28rem] ml-[2rem] p-3 relative border border-gray-600 rounded-lg bg-zinc-800">
       <div className="relative">
         <img
           src={product.image}
           alt={product.name}
-          className="w-[30rem] rounded"
+          className="w-[28rem] h-[30rem] object-cover rounded"
         />
         <HeartIcon product={product} />
       </div>
@@ -16,8 +16,8 @@ const Product = ({ product }) => {
       <div className="p-4">
         <Link to={`/product/${product._id}`}>
           <h2 className="flex justify-between items-center">
-            <div className="text-lg">{product.name}</div>
-            <span className="bg-pink-100 text-pink-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded-full dark:bg-pink-900 dark:text-pink-300">
+            <div className="text-lg">{product.name.slice(0, 30)}</div>
+            <span className="bg-pink-100 text-pink-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded-full dark:bg-pink-900 dark:text-pink-300 flex flex-row">
               $ {product.price}
             </span>
           </h2>
